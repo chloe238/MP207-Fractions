@@ -77,20 +77,25 @@ public class Fraction {
    * Build a new fraction by parsing a string.
    */
   public Fraction(String str) {
-    int indexOfSlash = str.indexOf("/");
-    String numStr = str.substring(0, indexOfSlash);
-    String denomStr = str.substring(indexOfSlash + 1, str.length());
-
-    BigInteger tempNum = BigInteger.valueOf(Integer.parseInt(numStr));
-    BigInteger tempDenom = BigInteger.valueOf(Integer.parseInt(denomStr));
-
-    if (tempDenom.compareTo(BigInteger.ZERO) == -1) {
-      this.num = tempNum.negate();
-      this.denom = tempDenom.negate();
+    int indexOfSlash = str.indexOf('/');
+    if (indexOfSlash == -1){
+      this.num = BigInteger.valueOf(Integer.parseInt(str));
+      this.denom = BigInteger.ONE;
     } else {
-      this.num = tempNum;
-      this.denom = tempDenom;
-    }
+      String numStr = str.substring(0, indexOfSlash);
+      String denomStr = str.substring(indexOfSlash + 1, str.length());
+
+      BigInteger tempNum = BigInteger.valueOf(Integer.parseInt(numStr));
+      BigInteger tempDenom = BigInteger.valueOf(Integer.parseInt(denomStr));
+
+      if (tempDenom.compareTo(BigInteger.ZERO) == -1) {
+        this.num = tempNum.negate();
+        this.denom = tempDenom.negate();
+      } else {
+        this.num = tempNum;
+        this.denom = tempDenom;
+      }
+    } 
   } // Fraction
 
   // +---------+------------------------------------------------------
