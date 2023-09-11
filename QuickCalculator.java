@@ -6,7 +6,7 @@ public class QuickCalculator {
         BFCalculator quickCalc = new BFCalculator(); //new calculator
         String expression = "";
         if (args.length < 1) {
-            pen.println("Please input a expression or STORE command");
+            pen.println("Please input an expression");
             System.exit(1);
         } // check for correct number of command line args
 
