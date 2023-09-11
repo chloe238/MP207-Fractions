@@ -9,16 +9,16 @@ public class BFCalculator {
         this.memoryStore[index] = this.lastEval;
     } //store(char)
 
-    public BigFraction getStored(int index){
-        return this.memoryStore[index];
-    }//getStored(int)
+    // public BigFraction getStored(int index){
+    //     return this.memoryStore[index];
+    // }//getStored(int)
     
     public BigFraction evaluate(String exp){
         String[] exparr = exp.split(" ");
 
         for(int i = 0; i < exparr.length; i++){
             if(Character.isLowerCase(exparr[i].toCharArray()[0])) {
-                exparr[i] = this.getStored((int) (exparr[i].toCharArray()[0]) - 97).toString();
+                exparr[i] = this.memoryStore[((int) (exparr[i].toCharArray()[0]) - 97)].toString();
             }
         }//convert any stored variables to fractions
 
