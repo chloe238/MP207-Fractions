@@ -9,10 +9,6 @@ public class BFCalculator {
         this.memoryStore[index] = this.lastEval;
     } //store(char)
 
-    // public BigFraction getStored(int index){
-    //     return this.memoryStore[index];
-    // }//getStored(int)
-    
     public BigFraction evaluate(String exp){
         String[] exparr = exp.split(" ");
 
