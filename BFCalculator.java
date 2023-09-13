@@ -1,3 +1,9 @@
+/**
+ * A calculator that can do basic calculations between BigFractions and store up to 26 previous evaluations.
+ *
+ * @author Chloe Kelly
+ */
+
 public class BFCalculator {
 
         BigFraction[] memoryStore = new BigFraction[26];
