@@ -1,3 +1,9 @@
+/**
+ * An interactive BigFraction caluator that can compute strings of operations and store the last evaluation given.
+ *
+ * @author Chloe Kelly
+ */
+
 import java.io.PrintWriter;
 import java.util.Scanner;
 
