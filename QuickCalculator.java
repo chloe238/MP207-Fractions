@@ -1,3 +1,9 @@
+/**
+ * A quick calculator that can read a single expression from the command-line.
+ *
+ * @author Chloe Kelly
+ */
+
 import java.io.PrintWriter;
 
 public class QuickCalculator {
