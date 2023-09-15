@@ -10,15 +10,19 @@ public class QuickCalculator {
     public static void main(String[] args) {
         PrintWriter pen = new PrintWriter(System.out, true); // new output instance
         BFCalculator quickCalc = new BFCalculator(); //new calculator
-        String expression = "";
         if (args.length < 1) {
             pen.println("Please input an expression");
             System.exit(1);
         } // check for correct number of command line args
 
         for (int i = 0; i < args.length; i++) {
-            expression = expression.concat(args[i] + " "); //combines args into single string
+            if(args[i].split(" ", 2)[0].compareTo("STORE") == 0){ 
+                quickCalc.store(args[i].split(" ", 2)[1].toCharArray()[0]); 
+                //run store command
+            } else { 
+                pen.println(quickCalc.evaluate(args[i]).toString());
+                //evaluate
+            } 
         }
-        pen.println(quickCalc.evaluate(expression).toString());
     }
 }

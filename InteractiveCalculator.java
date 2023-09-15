@@ -17,6 +17,7 @@ public class InteractiveCalculator {
         /*  */
         
         String input = "";
+        BigFraction eval = new BigFraction(0);
         while(input.compareTo("QUIT") != 0){
             input = scan.nextLine();
 
@@ -27,7 +28,10 @@ public class InteractiveCalculator {
                 calc.store(input.split(" ", 2)[1].toCharArray()[0]); 
                 //run store command
             } else { 
-                pen.println(calc.evaluate(input).toString());
+                eval = calc.evaluate(input);
+                if(eval != null){
+                    pen.println(calc.evaluate(input).toString());
+                }
                 //evaluate
             }
         }
