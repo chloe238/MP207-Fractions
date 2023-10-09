@@ -5,6 +5,7 @@
  * @author Chloe Kelly
  */
 
+
 import java.io.PrintWriter;
 import java.util.Scanner;
 
@@ -16,10 +17,8 @@ public class InteractiveCalculator {
     // welcome message
     pen.println(
         "Interactive Calculator! Enter your expressions, or \"QUIT\" to exit the program.\nStore your last evaluation with \"STORE [variable (a single lowercase letter)]\"");
-    /*  */
 
     String input = "";
-    BigFraction eval = new BigFraction(0);
     while (input.compareTo("QUIT") != 0) {
       input = scan.nextLine();
 
@@ -30,9 +29,10 @@ public class InteractiveCalculator {
         calc.store(input.split(" ", 2)[1].toCharArray()[0]);
         // run store command
       } else {
-        eval = calc.evaluate(input);
-        if (eval != null) {
+        try{
           pen.println(calc.evaluate(input).toString());
+        } catch (Exception e) {
+          pen.println("Form incorrect. Please alternate between a fraction/register and an operation.");
         }
         // evaluate
       }

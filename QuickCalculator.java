@@ -21,7 +21,11 @@ public class QuickCalculator {
         quickCalc.store(args[i].split(" ", 2)[1].toCharArray()[0]);
         // run store command
       } else {
-        pen.println(quickCalc.evaluate(args[i]).toString());
+        try {
+          pen.println(quickCalc.evaluate(args[i]).toString());
+        } catch (Exception e) {
+          pen.println("Form incorrect. Please alternate between a fraction/register and an operation.");
+        }
         // evaluate
       }
     }

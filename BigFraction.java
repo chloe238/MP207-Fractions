@@ -78,30 +78,35 @@ public class BigFraction {
    */
   public BigFraction(String str) {
     int indexOfSlash = str.indexOf('/');
-    if (indexOfSlash == -1){
+    if (indexOfSlash == -1){ //if we're given a whole number
       this.num = BigInteger.valueOf(Integer.parseInt(str));
       this.denom = BigInteger.ONE;
-    } else {
+    } else { 
       String numStr = str.substring(0, indexOfSlash);
-      String denomStr = str.substring(indexOfSlash + 1, str.length());
+      String denomStr = str.substring(indexOfSlash + 1, str.length());//get num and denom
 
       BigInteger tempNum = BigInteger.valueOf(Integer.parseInt(numStr));
-      BigInteger tempDenom = BigInteger.valueOf(Integer.parseInt(denomStr));
+      BigInteger tempDenom = BigInteger.valueOf(Integer.parseInt(denomStr)); //set them as BigIntegers
 
       if (tempDenom.compareTo(BigInteger.ZERO) == -1) {
         this.num = tempNum.negate();
-        this.denom = tempDenom.negate();
+        this.denom = tempDenom.negate(); //to return correctly formatted signs
       } else {
         this.num = tempNum;
         this.denom = tempDenom;
-      }
-    } 
+      } //if/else
+
+    } // if/else
   } // BigFraction
 
   // +---------+------------------------------------------------------
   // | Methods |
   // +---------+
 
+  /**
+   * Returns this BigFraction in it's simplest form
+   * 
+   */
   public BigFraction simplify() {
     BigInteger tempVal1 = this.num.abs();
     BigInteger tempVal2 = this.denom;
@@ -141,7 +146,7 @@ public class BigFraction {
     }
     // Return the computed value
     return new BigFraction(resultNumerator, resultDenominator);
-  }// addOrSubtract(BigFraction)
+  }// addOrSubtract(BigFraction, boolean)
 
   /**
    * Multiply or divide the fraction `multiplyMe` to this fraction.
@@ -160,11 +165,14 @@ public class BigFraction {
 
     return new BigFraction(resultNumerator, resultDenominator);
 
-  } // multiplyOrDivide (BigFraction, BigFraction)
+  } // multiplyOrDivide (BigFraction, boolean)
 
+  /**
+   * Represent fractional value of this number
+   */
   public BigFraction fractional() {
     return new BigFraction(this.num.mod(this.denom), this.denom);
-  }
+  }//fractional()
 
   /**
    * Get the denominator of this fraction.
